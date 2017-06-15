@@ -1,0 +1,8 @@
+{
+  "name": "gulp_project",
+  "version": "0.0.1",
+  "description": "Gulp first application",
+  "author": "Yuriy Bogatyrenko",
+  "dependencies": {
+  }
+}

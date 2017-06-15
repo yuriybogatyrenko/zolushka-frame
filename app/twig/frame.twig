@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/frame-css.css">
+</head>
+<body>
+<div class="frame-ovh">
+    <div class="frame-wrapper">
+        <div class="frame-logo">
+            <div class="dib">
+                <a href="#" class="frame-logo__img">
+                    <img src="frame-images/logo.svg" alt="">
+                </a>
+                <a href="#" class="frame-logo__text">
+                    <span class="visible-tab">Получить доступ к <br>премиум девушкам &rsaquo;</span>
+                    <span class="visible-mobile">премиум девушки &rsaquo;</span>
+                </a>
+            </div>
+        </div>
+        <div class="frame-listing">
+            {% for i in 1..15 %}
+                <a href="#" class="frame-listing__item">
+                    <img class="frame-listing__image" alt="" src="http://placehold.it/100x100"/>
+                    <div class="frame-listing__overlay">
+                        <div class="frame-listing__name">Аня 27</div>
+                        <div class="frame-listing__comment">
+                            <i class="frame-icon-comment"></i>
+                        </div>
+                        <div class="frame-listing__views">172/55 4</div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

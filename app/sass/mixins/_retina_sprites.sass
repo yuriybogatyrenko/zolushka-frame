@@ -1,0 +1,68 @@
+=retina-bg($normal, $retina, $contain: false)
+    background-image: image-url($normal)
+    background-repeat: no-repeat
+    background-position: center center
+
+    @if $contain == true and $contain != 'autosize'
+        background-size: contain
+    @else if $contain == 'autosize'
+        background-size: (image-width($retina) / 2) (image-height($retina) / 2)
+        width: image-width($retina) / 2
+        height: image-height($retina) / 2
+        display: inline-block
+    @else
+        background-size: (image-width($retina) / 2) (image-height($retina) / 2)
+
+    @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 1.5dppx)
+        background-image: image-url($retina)
+
+// first we'll define the folders where the sprites are and their layouts
+// $icons: sprite-map("icons/*.png", $layout: smart)
+// $icons-2x: sprite-map("icons-2x/*.png", $layout: smart)
+
+//$icons: sprite-map("icons/*.png", $position: 0, $spacing: 5px, $repeat: no-repeat)
+//$icons-2x: sprite-map("icons-2x/*.png", $position: 0, $spacing: 5px, $repeat: no-repeat)
+
+
+=sprite($sprite, $type: "all", $pos: "static")
+
+    @if $type != "retina"
+        background-image: sprite-url($icons)
+        background-position: sprite-position($icons, $sprite)
+        background-repeat: no-repeat
+        overflow: hidden
+        display: inline-block
+        vertical-align: middle
+        height: ceil(image-height(sprite-file($icons, $sprite)))
+        width: ceil(image-width(sprite-file($icons, $sprite)))
+        @if $pos == "abs_middle"
+            position: absolute
+            top: 50%
+            left: 50%
+            margin-top: -(image-height(sprite-file($icons, $sprite))/2)
+            margin-left: -(image-width(sprite-file($icons, $sprite))/2)
+
+        @media (-webkit-min-device-pixel-ratio:1.5),(min--moz-device-pixel-ratio:1.5),(-o-min-device-pixel-ratio:3/2),(min-resolution:1.5dppx)
+            background-image: sprite-url($icons-2x)
+            background-size: ceil(image-width(sprite-path($icons-2x)) / 2) auto
+            background-position: round(nth(sprite-position($icons-2x, $sprite), 1) / 2) round(nth(sprite-position($icons-2x, $sprite), 2) / 2)
+            height: ceil(image-height(sprite-file($icons-2x, $sprite)) / 2)
+            width: ceil(image-width(sprite-file($icons-2x, $sprite)) / 2)
+            @if $pos == "abs_middle"
+                position: absolute
+                top: 50%
+                left: 50%
+                margin-top: -(image-height(sprite-file($icons-2x, $sprite)) / 2) / 2
+                margin-left: -(image-width(sprite-file($icons-2x, $sprite)) / 2) / 2
+    @else
+        background-image: sprite-url($icons-2x)
+        background-size: ceil(image-width(sprite-path($icons-2x)) / 2) auto
+        background-position: round(nth(sprite-position($icons-2x, $sprite), 1) / 2) round(nth(sprite-position($icons-2x, $sprite), 2) / 2)
+        height: ceil(image-height(sprite-file($icons-2x, $sprite)) / 2)
+        width: ceil(image-width(sprite-file($icons-2x, $sprite)) / 2)
+        @if $pos == "abs_middle"
+            position: absolute
+            top: 50%
+            left: 50%
+            margin-top: -(image-height(sprite-file($icons-2x, $sprite)) / 2) / 2
+            margin-left: -(image-width(sprite-file($icons-2x, $sprite)) / 2) / 2
